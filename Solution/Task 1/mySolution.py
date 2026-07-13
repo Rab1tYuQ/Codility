@@ -20,13 +20,13 @@ def solution(N, A, B):
     for i in range(N):
         if degree[i] <= 1:
             queue.append(i)
-            removed[i] = True
     
     while queue:
         size = len(queue)
         
         for _ in range(size):
             node = queue.popleft()
+            removed[node] = True
             
             for neighbor in graph[node]:
                 if removed[neighbor]:
@@ -34,7 +34,7 @@ def solution(N, A, B):
                 
                 degree[neighbor] -= 1
                 if degree[neighbor] <= 1:
-                    removed[neighbor] == True
+                    removed[neighbor] = True
                     queue.append(neighbor)
                     
         ans += 1
